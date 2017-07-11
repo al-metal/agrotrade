@@ -33,9 +33,9 @@
             this.tbPasswords = new System.Windows.Forms.TextBox();
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.btnPrice = new System.Windows.Forms.Button();
-            this.lblVsegoRazdelov = new System.Windows.Forms.Label();
+            this.lblVsego = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblRazdel = new System.Windows.Forms.Label();
+            this.lblTovar = new System.Windows.Forms.Label();
             this.lblNamePosition = new System.Windows.Forms.Label();
             this.ofdLoadPrice = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
@@ -83,14 +83,14 @@
             this.btnPrice.UseVisualStyleBackColor = true;
             this.btnPrice.Click += new System.EventHandler(this.btnPrice_Click);
             // 
-            // lblVsegoRazdelov
+            // lblVsego
             // 
-            this.lblVsegoRazdelov.AutoSize = true;
-            this.lblVsegoRazdelov.Location = new System.Drawing.Point(242, 67);
-            this.lblVsegoRazdelov.Name = "lblVsegoRazdelov";
-            this.lblVsegoRazdelov.Size = new System.Drawing.Size(13, 13);
-            this.lblVsegoRazdelov.TabIndex = 25;
-            this.lblVsegoRazdelov.Text = "0";
+            this.lblVsego.AutoSize = true;
+            this.lblVsego.Location = new System.Drawing.Point(242, 67);
+            this.lblVsego.Name = "lblVsego";
+            this.lblVsego.Size = new System.Drawing.Size(13, 13);
+            this.lblVsego.TabIndex = 25;
+            this.lblVsego.Text = "0";
             // 
             // label5
             // 
@@ -101,14 +101,14 @@
             this.label5.TabIndex = 24;
             this.label5.Text = "из";
             // 
-            // lblRazdel
+            // lblTovar
             // 
-            this.lblRazdel.AutoSize = true;
-            this.lblRazdel.Location = new System.Drawing.Point(187, 67);
-            this.lblRazdel.Name = "lblRazdel";
-            this.lblRazdel.Size = new System.Drawing.Size(13, 13);
-            this.lblRazdel.TabIndex = 23;
-            this.lblRazdel.Text = "0";
+            this.lblTovar.AutoSize = true;
+            this.lblTovar.Location = new System.Drawing.Point(187, 67);
+            this.lblTovar.Name = "lblTovar";
+            this.lblTovar.Size = new System.Drawing.Size(13, 13);
+            this.lblTovar.TabIndex = 23;
+            this.lblTovar.Text = "0";
             // 
             // lblNamePosition
             // 
@@ -129,9 +129,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(283, 264);
-            this.Controls.Add(this.lblVsegoRazdelov);
+            this.Controls.Add(this.lblVsego);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblRazdel);
+            this.Controls.Add(this.lblTovar);
             this.Controls.Add(this.lblNamePosition);
             this.Controls.Add(this.btnPrice);
             this.Controls.Add(this.label2);
@@ -153,9 +153,9 @@
         private System.Windows.Forms.TextBox tbPasswords;
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.Button btnPrice;
-        private System.Windows.Forms.Label lblVsegoRazdelov;
+        private System.Windows.Forms.Label lblVsego;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblRazdel;
+        private System.Windows.Forms.Label lblTovar;
         private System.Windows.Forms.Label lblNamePosition;
         private System.Windows.Forms.OpenFileDialog ofdLoadPrice;
     }

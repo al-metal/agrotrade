@@ -76,10 +76,21 @@ namespace agrotrade
             ExcelWorksheet w = p.Workbook.Worksheets[1];
             int q = w.Dimension.Rows;
 
+            lblVsego.Invoke(new Action(() => lblVsego.Text = q.ToString()));
+
+
             for (int i = 4; q > i; i++)
             {
+                lblTovar.Invoke(new Action(() => lblTovar.Text = i.ToString()));
+
                 string name = (string)w.Cells[i, 1].Value;
-                double coast = (double)w.Cells[i, 3].Value;
+                double coast = 0;
+                try
+                {
+                    coast = (double)w.Cells[i, 3].Value;
+                }
+                catch { continue; }
+
                 coast = ReturnPrice(coast);
 
                 if (name == "" || coast == 0)
