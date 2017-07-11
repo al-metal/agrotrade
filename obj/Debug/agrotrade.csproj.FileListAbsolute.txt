@@ -1,0 +1,10 @@
+D:\GitHub\agrotrade\agrotrade\bin\Debug\agrotrade.exe.config
+D:\GitHub\agrotrade\agrotrade\bin\Debug\agrotrade.exe
+D:\GitHub\agrotrade\agrotrade\bin\Debug\agrotrade.pdb
+D:\GitHub\agrotrade\agrotrade\bin\Debug\EPPlus.dll
+D:\GitHub\agrotrade\agrotrade\obj\Debug\agrotrade.csprojResolveAssemblyReference.cache
+D:\GitHub\agrotrade\agrotrade\obj\Debug\agrotrade.Form1.resources
+D:\GitHub\agrotrade\agrotrade\obj\Debug\agrotrade.Properties.Resources.resources
+D:\GitHub\agrotrade\agrotrade\obj\Debug\agrotrade.csproj.GenerateResource.Cache
+D:\GitHub\agrotrade\agrotrade\obj\Debug\agrotrade.exe
+D:\GitHub\agrotrade\agrotrade\obj\Debug\agrotrade.pdb
