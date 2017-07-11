@@ -149,13 +149,42 @@ namespace agrotrade
 
         private string ReturnName(string name)
         {
-            if (name.Contains("Борона бдф"))
+            if (name.Contains("Борона бдф "))
             {
                 string options = new Regex("\\(.*\\)").Match(name).ToString();
                 name = name.Replace("бдф", "БДФ").Replace(options, "").Trim();
                 int countM = name.LastIndexOf('м');
                 if (countM == name.Length - 1)
                     name = name.Remove(name.Length - 1) + " м";
+            }
+            else if (name.Contains("Борона бдфп "))
+            {
+                string options = new Regex("\\(.*\\)").Match(name).ToString();
+                name = name.Replace("бдфп", "БДФП").Replace(options, "").Trim();
+                int countM = name.LastIndexOf('м');
+                if (countM == name.Length - 1)
+                    name = name.Remove(name.Length - 1) + " м";
+            }
+            else if (name.Contains("РН "))
+            {
+                name = "Глубокорыхлитель " + name;
+            }
+            else if (name.Contains("КГШ "))
+            {
+                string options = new Regex("\\(.*\\)").Match(name).ToString();
+                name = name.Replace("КГШ ", "КГШ-").Replace(options, "").Trim();
+                int countM = name.LastIndexOf('м');
+                if (countM == name.Length - 1)
+                    name = name.Remove(name.Length - 1) + " м";
+                name = "Культиватор полевой широкозахватный  " + name;
+            }
+            else if (name.Contains("КМН (КРН) "))
+            {
+                name = "Культиватор междурядный  " + name;
+            }
+            else if (name.Contains("КГСП - 4"))
+            {
+                name = "Культиватор сплошной обработки почвы  " + name;
             }
 
             return name;
