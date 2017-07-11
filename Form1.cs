@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -75,13 +76,44 @@ namespace agrotrade
             ExcelWorksheet w = p.Workbook.Worksheets[1];
             int q = w.Dimension.Rows;
 
-            for (int i = 14; q > i; i++)
+            for (int i = 4; q > i; i++)
             {
+                string name = (string)w.Cells[i, 1].Value;
+                string coast = (string)w.Cells[i, 2].Value;
 
+                if (name == "" || coast == "")
+                    continue;
+
+                name = ReturnName(name);
+                
+                string urlProduct = "";
+                urlProduct = nethouse.searchTovar(name, name);
+                if(urlProduct == null)
+                {
+
+                }
+                else
+                {
+
+                }
             }
 
 
             ControlsFormEnabledTrue();
+        }
+
+        private string ReturnName(string name)
+        {
+            if(name.Contains("Борона бдф"))
+            {
+                string options = new Regex("\\(.*\\)").Match(name).ToString();
+                name = name.Replace("бдф", "БДФ").Replace(options, "").Trim();
+                int countM = name.LastIndexOf('м');
+                if( countM == name.Length - 1)
+                    name = name.Remove(name.Length - 1) + " м";
+            }
+
+            return name;
         }
 
         private void ControlsFormEnabledTrue()
