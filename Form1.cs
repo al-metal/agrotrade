@@ -79,22 +79,31 @@ namespace agrotrade
             for (int i = 4; q > i; i++)
             {
                 string name = (string)w.Cells[i, 1].Value;
-                string coast = (string)w.Cells[i, 2].Value;
+                double coast = (double)w.Cells[i, 3].Value;
+                coast = ReturnPrice(coast);
 
-                if (name == "" || coast == "")
+                if (name == "" || coast == 0)
                     continue;
 
                 name = ReturnName(name);
-                
+
                 string urlProduct = "";
                 urlProduct = nethouse.searchTovar(name, name);
-                if(urlProduct == null)
+                if (urlProduct == null)
                 {
 
                 }
                 else
                 {
+                    List<string> productB18 = nethouse.GetProductList(cookie, urlProduct);
 
+                    string coastB18 = productB18[9];
+
+                    if (coast.ToString() != coastB18)
+                    {
+                        productB18[9] = coast.ToString();
+                        nethouse.SaveTovar(cookie, productB18);
+                    }
                 }
             }
 
@@ -102,14 +111,50 @@ namespace agrotrade
             ControlsFormEnabledTrue();
         }
 
+        private double ReturnPrice(double coast)
+        {
+            int newCoast = 0;
+            if (coast < 30000)
+            {
+                double percent = coast * 0.2;
+                coast = coast + percent;
+                newCoast = Convert.ToInt32(coast);
+                newCoast = newCoast / 100 * 100;
+            }
+            else if (coast < 100000)
+            {
+                double percent = coast * 0.15;
+                coast = coast + percent;
+                newCoast = Convert.ToInt32(coast);
+                newCoast = newCoast / 100 * 100;
+            }
+            else if (coast < 1000000)
+            {
+                double percent = coast * 0.1;
+                coast = coast + percent;
+                newCoast = Convert.ToInt32(coast);
+                newCoast = newCoast / 100 * 100;
+            }
+            else if (coast > 100000)
+            {
+                double percent = coast * 0.05;
+                coast = coast + percent;
+                newCoast = Convert.ToInt32(coast);
+                newCoast = newCoast / 100 * 100;
+            }
+
+            coast = Convert.ToDouble(newCoast);
+            return coast;
+        }
+
         private string ReturnName(string name)
         {
-            if(name.Contains("Борона бдф"))
+            if (name.Contains("Борона бдф"))
             {
                 string options = new Regex("\\(.*\\)").Match(name).ToString();
                 name = name.Replace("бдф", "БДФ").Replace(options, "").Trim();
                 int countM = name.LastIndexOf('м');
-                if( countM == name.Length - 1)
+                if (countM == name.Length - 1)
                     name = name.Remove(name.Length - 1) + " м";
             }
 
