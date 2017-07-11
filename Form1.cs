@@ -1,5 +1,6 @@
 ﻿using Bike18;
 using OfficeOpenXml;
+using RacerMotors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,7 @@ namespace agrotrade
 
         nethouse nethouse = new nethouse();
         httpRequest httprequest = new httpRequest();
+        FileEdit files = new FileEdit();
 
         string fileUrls;
 
@@ -41,6 +43,8 @@ namespace agrotrade
             Properties.Settings.Default.login = tbLogin.Text;
             Properties.Settings.Default.password = tbPasswords.Text;
             Properties.Settings.Default.Save();
+
+            File.Delete("Товары которые не обновились.csv");
 
             fileUrls = "";
             ofdLoadPrice.ShowDialog();
@@ -62,6 +66,8 @@ namespace agrotrade
         private void UpdateTovarXLSX()
         {
             ControlsFormEnabledFalse();
+
+            List<string> final = new List<string>();
 
             CookieContainer cookie = nethouse.CookieNethouse(tbLogin.Text, tbPasswords.Text);
             if (cookie.Count == 1)
@@ -102,7 +108,8 @@ namespace agrotrade
                 urlProduct = nethouse.searchTovar(name, name);
                 if (urlProduct == null)
                 {
-
+                    final.Add(name + ";" + coast);
+                    files.fileWriterCSV(final, "Товары которые не обновились");
                 }
                 else
                 {
@@ -118,8 +125,8 @@ namespace agrotrade
                 }
             }
 
-
             ControlsFormEnabledTrue();
+            MessageBox.Show("Файл с новыми товара находиться в папке с программой\n");
         }
 
         private double ReturnPrice(double coast)
