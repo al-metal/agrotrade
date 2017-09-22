@@ -106,7 +106,9 @@ namespace agrotrade
                 if (name == "" || coast == 0)
                     continue;
 
-                name = ReturnName(name);
+                string article = ReturnArticle(wAgro, name);
+
+                //name = ReturnName(name);
 
                 string urlProduct = "";
                 urlProduct = nethouse.searchTovar(name, name);
@@ -131,6 +133,23 @@ namespace agrotrade
             ControlsFormEnabledTrue();
             files.fileWriterCSV(final, "Товары которые не обновились");
             MessageBox.Show("Файл с новыми товара находиться в папке с программой\n");
+        }
+
+        private string ReturnArticle(ExcelWorksheet wAgro, string name)
+        {
+            string article = "";
+            int count = wAgro.Dimension.Rows;
+
+            for(int i = 1; count > i; i++)
+            {
+                string nameAgro = (string)wAgro.Cells[i, 1].Value;
+                if(name == nameAgro.Trim())
+                {
+                    article = (string)wAgro.Cells[i, 3].Value;
+                    break;
+                }
+            }
+            return article;
         }
 
         private double ReturnPrice(double coast)
