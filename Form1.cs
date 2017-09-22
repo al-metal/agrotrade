@@ -77,6 +77,10 @@ namespace agrotrade
                 return;
             }
 
+            FileInfo agro = new FileInfo("Агротрейд.xlsx");
+            ExcelPackage pAgro = new ExcelPackage(agro);
+            ExcelWorksheet wAgro = pAgro.Workbook.Worksheets[1];
+
             FileInfo file = new FileInfo(fileUrls);
             ExcelPackage p = new ExcelPackage(file);
             ExcelWorksheet w = p.Workbook.Worksheets[1];
@@ -108,8 +112,7 @@ namespace agrotrade
                 urlProduct = nethouse.searchTovar(name, name);
                 if (urlProduct == null)
                 {
-                    final.Add(name + ";" + coast);
-                    files.fileWriterCSV(final, "Товары которые не обновились");
+                    final.Add(name + "\n");
                 }
                 else
                 {
@@ -126,6 +129,7 @@ namespace agrotrade
             }
 
             ControlsFormEnabledTrue();
+            files.fileWriterCSV(final, "Товары которые не обновились");
             MessageBox.Show("Файл с новыми товара находиться в папке с программой\n");
         }
 
