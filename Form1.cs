@@ -14,6 +14,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NehouseLibrary;
+using xNet.Net;
 
 namespace agrotrade
 {
@@ -69,7 +71,7 @@ namespace agrotrade
 
             List<string> final = new List<string>();
 
-            CookieContainer cookie = nethouse.CookieNethouse(tbLogin.Text, tbPasswords.Text);
+            CookieDictionary cookie = nethouse.CookieNethouse(tbLogin.Text, tbPasswords.Text);
             if (cookie.Count == 1)
             {
                 MessageBox.Show("Логин или пароль для сайта введены не верно", "Ошибка логина/пароля");
@@ -108,10 +110,13 @@ namespace agrotrade
 
                 string article = ReturnArticle(wAgro, name);
 
+                if (article == "")
+                    continue;
+
                 //name = ReturnName(name);
 
                 string urlProduct = "";
-                urlProduct = nethouse.searchTovar(name, name);
+                urlProduct = nethouse.searchTovar(name, article);
                 if (urlProduct == null)
                 {
                     final.Add(name + "\n");
