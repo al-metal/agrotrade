@@ -111,7 +111,10 @@ namespace agrotrade
                 string article = ReturnArticle(wAgro, name);
 
                 if (article == "")
+                {
+                    final.Add(name + "\n");
                     continue;
+                }                    
 
                 //name = ReturnName(name);
 
@@ -145,10 +148,10 @@ namespace agrotrade
             string article = "";
             int count = wAgro.Dimension.Rows;
 
-            for(int i = 1; count > i; i++)
+            for (int i = 1; count > i; i++)
             {
                 string nameAgro = (string)wAgro.Cells[i, 1].Value;
-                if(name == nameAgro.Trim())
+                if (name == nameAgro.Trim())
                 {
                     article = (string)wAgro.Cells[i, 3].Value;
                     break;
